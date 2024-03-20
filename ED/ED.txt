@@ -1,0 +1,203 @@
+REVISAO - POO
+    conceitos de POO - Abstracao
+                       Encapsulamento
+                       Heranca
+                       Polimorfismo
+
+    ABSTRACAO - representacao de uma entidade do mundo real,
+                com seu comportamento e caracteristicas
+                    
+        CLASSE - tipo abstrato de dados que reune objetos similares
+
+        class estudante{
+            private:
+                String nome;
+                int idade;
+                int matricula;
+                String diciplinas[10];
+
+            public:
+                void inicializarDados(String n, int i, int m);
+                void imprimirDados();
+                bool matricularEmDisciplina(String disciplina);
+
+        }
+
+        ATRIBUTOS - representa um caracteristica de um grupo de itens da vida real
+                    agrupados em uma classe
+    
+        METODOS - sao funcoes e procedimentos que sao presentes em uma classe
+
+        OBJETOS - representam instancias unicas de uma classe
+    
+    ENCAPSULAMENTO - ocultacao de dados, melhor aproveitamento dos componetes
+                     do software
+                     
+                     Seguranca
+                     Independencia
+                     Elevado grau de abstracao
+                     Minimizacao da interdependencia
+
+                     o encapsulamento pode ser modificado, permitindo que outras
+                     classes acessem os dados privados de uma outra classe. Em c++
+                     isso é feito pela diretriz friend.
+
+
+
+TAD - tipo abstrato de dados
+    cada entidade que compoe a solucao do problema
+    representar um objeto real ou imaginario atravez de dados
+    cada TAD deve possuir operacoes(metodos) proprios
+    
+    EX: ITEM - nome
+               pes
+               descricao 
+               local
+        Esse TAD consegue tanto resolver problemas de um cadastro de animasis
+        em um zoologico quanto de um estoque de itens de uma loja
+
+REGISTRO vs CLASSE - usando classe temos - Melhor organizacao
+                                           Metodos proprios
+                                           Controle de "acesso" dos Metodos
+                                           Maior confiabilidade 
+
+
+
+EXERCICIO DE TESTE - 
+
+    O dono de um sebo decidiu
+    controlar melhor seu acervo e seus
+    negócios. Ele gostaria de manter as
+    informações sobre com quem ele
+    negociou, armazenando nome e
+    telefone para contato, qual foi o
+    tipo de negócio (compra ou
+    venda), o valor do negócio (o
+    quanto foi pago ou recebido) e o
+    dia da semana em que o negócio
+    ocorreu. 
+
+
+IMPLEMENTACAO DOS METODOS DE UMA CLASSE - INLINE - implementacao dos metodos sao feitas dentro da classe
+                                                   gera um pequeno aumento de eficiencia, sao usados geralmente em
+                                                   funcoes pequenas e que sao chamadas muitas vezes.
+
+                                        - Quando implementar os metodos fora da classe é necessario o operador
+                                          de escopo " :: " - permite que o codigo seja separado em arquivos diferentes
+
+CONSTRUTOR - Inicializa automaticamente um elemente e seus atributos, geralmente tem o mesmo nome da classe
+
+DESTRUTORES - Servem para limpar a memoria, é indicado pelo nome da classe mas com o " ~ " antes do nome
+                                          
+
+INICIALIZACAO DIRETA - As caracteristicas sao inicializadas no corpo do CONSTRUTOR
+INICIALIZACAO EM LISTA - As caracteristicas sao inicializadas apos a declaracao da funcao e a diretiva " : "
+
+ATRIBUTOS ALOCADOS DINAMICAMENTE - CONSTRUTOR PADRAO - Apenas aloca espaco na memoria
+                                                       para valores estaticos
+
+                                   CONSTRUTOR DE COPIA - Faz copia do objeto, copiando atributos estaticos
+
+                                   OPERADOR DE ATRIBUICAO - Copia os valores de um objeto a direita para um objeto a esquerda
+
+                                   PONTEIROS - Sao variaveis estaticas que sao geralmente usados
+                                               para apontar variaveis alocadas dinamicamentes, ou seja
+                                               o endereco de memoria do ponteiro e copiado mas a area apontada por ele necessario
+                                               
+SOBRECARGA DE OPERADORES - Um mecanismo que permite modificar operadores dependendo dos argumentos fornecidos
+                           pode acarretar menor legibilidade no codigo  
+
+                           EX: public class Ponto{
+                                    private:
+                                        int x;
+                                        int y;
+                                    public:
+                                        Ponto operator+(const Ponto &outro){
+                                            return new Ponto(this -> x + outro.x, this -> y + outro.y);
+                                        }
+                                        ...
+                               }  
+                           A sobrecarga do operador em c++ e feita pela funcao *operator* 
+
+                           This - e um ponteiro para o objeto atual, ele e utilizado para ter mais clareza no codigo
+
+                           A sobrecarga de operadores podem gerar problemas semanticos e de legibilidade, entao devem ser usadas com cautela
+
+QUAIS ATRIBUTOS E METODOS UMA CLASSE DEVE TER - RECOMENDACAO - Utilizar o minimo necessario de atributos para representar uma classe
+                                                  
+
+PILHA -  LAST IN LAST OUT - Ultimo elemento a ser inserido sera o ultimo a ser retirado
+         Sao utilizadas no processo recursivos, calculadora, conversao de normal para binario, mecanismos de navegacao da internet
+         
+         OPERACOES BASICAS - Criacao / Destruicao
+                             Insercao ou Empilhamento - Consiste em criar um novo noh com dado a ser armazenado e posteriormente colocar no topo
+                             Remocao ou Desempilhamento
+
+                             As pilhas podem ter metodos para - Verificar o numero de elementos da pilha
+                                                                Verificar se a pilha esta ou nao vazia
+                                                                Retirar todos os elementos da pilha
+                                                                Opcionalmente acessar o topo da pilha
+                                                                Opcionalmente depurar e imprimir a pilha
+
+                            Uma implementacao comum e utilizando arranjo - Utiliza um vetor para armazenar os dados que funciona de acordo com as regras da pilha
+                                                                           Tras vantagens como - Maior eficiencia das operacoes, como acessos, empilhamento e Desempilhamento
+                                                                           Mas tras desvantagens como - Espaco alocado sem necessidade, impossibilidade de aumentar a capacidade da pilha
+                                                                           sem redimensionamento de vetor 
+                                                                           Geralmente e utilizada em aplicacoes de sistemas ou no quernel de sistemas operacionais
+
+FILA - Sequencia de pessoas ou coisas alinhadas geralmente em ordem cronologica de chegada ou por diferentes criterios
+       Na computacao - Uma estrutura de dados que assume a ideia  de sequencia de objetos para armazenar as informacoes - Baseada no principio First In / First out
+       Manipulacao feita pelas estremidades
+
+       APLICACOES - Escalonamento de processos da CPU 
+                    Escalonamento de acesso a memoria secundaraia
+                    Sicronizacao de problemas assincronos
+                    Gerenciamento de fila de impressao 
+                    Controle de interrupcoes de hardware
+                    Controle de chamadas em call centers
+                    Busca em largura em grafos
+
+       OPERACOES -  Criacao / Destruicao
+                    Insercao ou Enfileiramento
+                    Remocao ou Desenfileiramento
+
+                    O processo de criacao da fila, consoste em que seus apontadores nao apontem para uma regiao valida da memoria - Apontadores de inicio em fim apontam para nulo
+                    A insercao consiste em criar um novo noh com dado a ser armazenado e posteriormente colocalo no fim da fila, assim ele passa a ser o novo elemento do sim da fila
+
+                    PROCESSO DE INSERCAO - enqueue(valor)(){
+                                                novo <- criar_noh(valor);
+                                                if (filavazia == true){
+                                                    primeiro <- novo;
+                                                }
+
+                                                else{
+                                                    fim -> proximo <- novo;
+                                                }
+                                                fim <- novo;
+                                                tamanho++;
+                                           }
+
+                    PROCESSO DE REMOCAo - dequeue(){
+                                            aux <- inicio;
+                                            dado <- aux.valor;
+                                            inicio <- aux.proximo;
+                                            apagar(aux);
+                                            tamanho--;
+                                            if (filavazia == true){
+                                                fim <- nulo;
+                                            }
+                                            efetuaAcao(dado);
+                                          }
+
+                    A insercao sempre deve ser feita pelo fim e a remocao pelo inicio
+
+       METODOS -  Verificar numero de elementos da fila
+                  Verificar se a fila esta ou nao vazia
+                  Retirar todos os elementos da fila
+                  Opcionalmente acessar o inicio da fila
+                  Opcionalmente depurar/imprimir a fila
+
+       Assim como na pilha, podemos inserir elementos na fila usando arranjos, porem por causa das suas desvantagens, se voce nao estiver trabalhando com sistemas operacionais, e recomendado usar as filas por 
+       encadeamento
+
+    
